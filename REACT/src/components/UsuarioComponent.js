@@ -36,7 +36,6 @@ const initialUsuarios =[
     }
 ]
 
-
 const UsuarioComponent = () => {
 
     const [usuarios, setUsuarios] = useState(initialUsuarios);
@@ -53,7 +52,21 @@ const UsuarioComponent = () => {
             usuario
         ]
         setUsuarios(addUsuarios)
+
     }
+
+    const [editMode, setEditMode] = useState(false)
+    const [id, setId] = useState("")
+    
+    const usuarioEditado = usuarios.map(usuario => usuario.key == key ? {key, usuarios} : usuario)
+    setUsuarios(usuarioEditado)
+
+    
+    const editarUsuario = (usuario) => {
+    setEditMode(true)
+    setUsuarios (usuario.nombre)
+    setId(id)
+}
 
     return(
     <div className="container mt-4">
